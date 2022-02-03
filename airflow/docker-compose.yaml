@@ -27,6 +27,7 @@ services:
             - ./dags:/usr/local/airflow/dags
             - ./plugins:/usr/local/airflow/plugins
             - ./sql:/usr/local/airflow/sql
+            - ./csv:/usr/local/airflow/csv
         ports:
             - 8086:8080
         command: webserver
