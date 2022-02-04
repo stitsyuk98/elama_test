@@ -23,3 +23,20 @@
 * Код дага и его тасков в gitHub + лог исполнения
 * текст SQL-запроса материализованного представления + скриншот с его содержимым
 * скриншот таблицы в BigQuery
+
+_____________________________________________________________________________________
+
+
+cd airflow/
+docker-compose up
+docker exec -it airflow_webserver_1 bash
+pip install --upgrade google-auth
+pip install --upgrade google-cloud-bigquery
+pip install pyarrow
+
+- В папке dags  создать папку keys  c  кредами к bigquery
+- Создать коннектор Postgres в интерфейсе airflow
+- В файле worker прописать свою переменную TABLE_ID
+
+cd postgres/
+docker-compose -f stack.yml up
