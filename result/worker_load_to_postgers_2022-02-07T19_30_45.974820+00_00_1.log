@@ -1,0 +1,19 @@
+*** Reading local file: /usr/local/airflow/logs/worker/load_to_postgers/2022-02-07T19:30:45.974820+00:00/1.log
+[2022-02-07 19:31:10,785] {{taskinstance.py:655}} INFO - Dependencies all met for <TaskInstance: worker.load_to_postgers 2022-02-07T19:30:45.974820+00:00 [queued]>
+[2022-02-07 19:31:10,860] {{taskinstance.py:655}} INFO - Dependencies all met for <TaskInstance: worker.load_to_postgers 2022-02-07T19:30:45.974820+00:00 [queued]>
+[2022-02-07 19:31:10,860] {{taskinstance.py:866}} INFO - 
+--------------------------------------------------------------------------------
+[2022-02-07 19:31:10,860] {{taskinstance.py:867}} INFO - Starting attempt 1 of 1
+[2022-02-07 19:31:10,860] {{taskinstance.py:868}} INFO - 
+--------------------------------------------------------------------------------
+[2022-02-07 19:31:10,890] {{taskinstance.py:887}} INFO - Executing <Task(PythonOperator): load_to_postgers> on 2022-02-07T19:30:45.974820+00:00
+[2022-02-07 19:31:10,893] {{standard_task_runner.py:53}} INFO - Started process 5042 to run task
+[2022-02-07 19:31:10,994] {{logging_mixin.py:112}} INFO - Running %s on host %s <TaskInstance: worker.load_to_postgers 2022-02-07T19:30:45.974820+00:00 [running]> 1b4654a53e6f
+[2022-02-07 19:31:11,049] {{logging_mixin.py:112}} INFO - [2022-02-07 19:31:11,048] {{base_hook.py:84}} INFO - Using connection to: id: postgres. Host: 10.1.1.25, Port: 54322, Schema: postgres, Login: postgres, Password: XXXXXXXX, extra: None
+[2022-02-07 19:31:11,559] {{logging_mixin.py:112}} INFO - [2022-02-07 19:31:11,558] {{worker.py:42}} INFO - The file transactions.csv uploaded successfully
+[2022-02-07 19:31:11,617] {{logging_mixin.py:112}} INFO - [2022-02-07 19:31:11,616] {{worker.py:42}} INFO - The file users.csv uploaded successfully
+[2022-02-07 19:31:11,662] {{logging_mixin.py:112}} INFO - [2022-02-07 19:31:11,662] {{worker.py:42}} INFO - The file webinar.csv uploaded successfully
+[2022-02-07 19:31:11,663] {{python_operator.py:114}} INFO - Done. Returned value was: None
+[2022-02-07 19:31:11,672] {{taskinstance.py:1048}} INFO - Marking task as SUCCESS.dag_id=worker, task_id=load_to_postgers, execution_date=20220207T193045, start_date=20220207T193110, end_date=20220207T193111
+[2022-02-07 19:31:20,737] {{logging_mixin.py:112}} INFO - [2022-02-07 19:31:20,737] {{local_task_job.py:103}} INFO - Task exited with return code 0
+
