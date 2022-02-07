@@ -1,0 +1,45 @@
+*** Reading local file: /usr/local/airflow/logs/worker/do_mat_view/2022-02-07T20:19:57.284916+00:00/1.log
+[2022-02-07 20:20:39,630] {{taskinstance.py:655}} INFO - Dependencies all met for <TaskInstance: worker.do_mat_view 2022-02-07T20:19:57.284916+00:00 [queued]>
+[2022-02-07 20:20:39,704] {{taskinstance.py:655}} INFO - Dependencies all met for <TaskInstance: worker.do_mat_view 2022-02-07T20:19:57.284916+00:00 [queued]>
+[2022-02-07 20:20:39,704] {{taskinstance.py:866}} INFO - 
+--------------------------------------------------------------------------------
+[2022-02-07 20:20:39,704] {{taskinstance.py:867}} INFO - Starting attempt 1 of 1
+[2022-02-07 20:20:39,704] {{taskinstance.py:868}} INFO - 
+--------------------------------------------------------------------------------
+[2022-02-07 20:20:39,717] {{taskinstance.py:887}} INFO - Executing <Task(PostgresOperator): do_mat_view> on 2022-02-07T20:19:57.284916+00:00
+[2022-02-07 20:20:39,723] {{standard_task_runner.py:53}} INFO - Started process 35247 to run task
+[2022-02-07 20:20:39,880] {{logging_mixin.py:112}} INFO - Running %s on host %s <TaskInstance: worker.do_mat_view 2022-02-07T20:19:57.284916+00:00 [running]> 1b4654a53e6f
+[2022-02-07 20:20:39,909] {{postgres_operator.py:62}} INFO - Executing: CREATE MATERIALIZED VIEW IF NOT EXISTS sales_summary AS
+select us.email, sum(t.price)
+from transactions t
+join users us using(user_id)
+where exists (
+    select user_id 
+    from webinar w
+    left join users u using(email)
+    where date_registration > '2016-04-01' and t.user_id = u.user_id
+        and w.email not in(
+            select email
+            from users u
+            where date_registration < '2016-04-01'
+        ) )
+group by us.email;
+[2022-02-07 20:20:39,927] {{logging_mixin.py:112}} INFO - [2022-02-07 20:20:39,927] {{base_hook.py:84}} INFO - Using connection to: id: postgres. Host: 10.1.1.25, Port: 54322, Schema: postgres, Login: postgres, Password: XXXXXXXX, extra: None
+[2022-02-07 20:20:39,940] {{logging_mixin.py:112}} INFO - [2022-02-07 20:20:39,940] {{dbapi_hook.py:174}} INFO - CREATE MATERIALIZED VIEW IF NOT EXISTS sales_summary AS
+select us.email, sum(t.price)
+from transactions t
+join users us using(user_id)
+where exists (
+    select user_id 
+    from webinar w
+    left join users u using(email)
+    where date_registration > '2016-04-01' and t.user_id = u.user_id
+        and w.email not in(
+            select email
+            from users u
+            where date_registration < '2016-04-01'
+        ) )
+group by us.email;
+[2022-02-07 20:20:40,069] {{taskinstance.py:1048}} INFO - Marking task as SUCCESS.dag_id=worker, task_id=do_mat_view, execution_date=20220207T201957, start_date=20220207T202039, end_date=20220207T202040
+[2022-02-07 20:20:49,608] {{logging_mixin.py:112}} INFO - [2022-02-07 20:20:49,608] {{local_task_job.py:103}} INFO - Task exited with return code 0
+
